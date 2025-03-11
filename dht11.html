@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial - Building a Temperature and Humidity Monitor with DHT11 and Arduino</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary-blue: #003366;
+            --electric-green: #00FF00;
+            --text-dark: #1A1A1A;
+            --white: #FFFFFF;
+            --light-gray: #D3D3D3;
+            --cyan: #00FFFF;
+        }
+
+        body {
+            background-color: #FAF9F6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            height: 100px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .bidu-button {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .bidu-button:hover {
+            background-color: #4331B9;
+        }
+
+        /* Tutorial Page */
+        .tutorial-page {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .tutorial-page h1 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+
+        .tutorial-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .tutorial-content img {
+            width: 100%;
+            margin: 1rem 0;
+            border-radius: 10px;
+        }
+
+        .tutorial-content h2 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .tutorial-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .tutorial-video {
+            margin-top: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .logo {
+                height: 80px;
+            }
+
+            .tutorial-page {
+                padding: 2rem 1rem;
+            }
+
+            .tutorial-page h1 {
+                font-size: 2rem;
+            }
+
+            .tutorial-content {
+                padding: 0 1rem;
+            }
+
+            .tutorial-video iframe {
+                width: 100%;
+                height: 315px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+
+            .logo {
+                height: 70px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .tutorial-page h1 {
+                font-size: 1.8rem;
+            }
+
+            .tutorial-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .tutorial-content p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="bg-remove.png" alt="Tech Tronics Logo" class="logo">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#team">Team</a>
+            <a href="project-tutorial.html">Projects Tutorial</a>
+            <a href="notice.html">Announcement</a>
+            <button class="bidu-button" onclick="location.href='join-us.html'">Join Us</button>
+        </div>
+    </nav>
+
+    <!-- Tutorial Section -->
+    <section class="tutorial-page">
+        <h1>Building a Temperature and Humidity Monitor with DHT11 and Arduino</h1>
+
+        <div class="tutorial-content">
+            <h2>Introduction</h2>
+            <p>This tutorial will walk you through the steps to build a simple temperature and humidity monitoring system using the DHT11 sensor and an Arduino. This project is ideal for beginners in electronics and programming. You'll learn how to wire the DHT11 sensor to the Arduino, write the code, and display the data on a serial monitor.</p>
+
+            <h2>Step 1: Gather Your Materials</h2>
+            <p>Before starting, make sure you have the following components:</p>
+            <ul>
+                <li>DHT11 Sensor</li>
+                <li>Arduino Uno</li>
+                <li>Jumper wires</li>
+                <li>Breadboard</li>
+            </ul>
+            <img src="temperature componenets.png" alt="DHT11 with Arduino">
+
+            <h2>Step 2: Connect the DHT11 to Arduino</h2>
+            <p>To connect the DHT11 sensor to the Arduino, follow the wiring diagram below:</p>
+            <img src="dht11-ardiuno.png" alt="DHT11 Wiring Diagram">
+
+            <h2>Step 3: Write the Arduino Code</h2>
+            <p>Now, let's write the code for the Arduino to read data from the DHT11 sensor. The following code will initialize the sensor and read the temperature and humidity values.</p>
+            <pre>
+#include <DHT.h>
+
+#define DHTPIN 2          // Pin connected to DHT11
+#define DHTTYPE DHT11     // DHT 11
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+}
+
+void loop() {
+  delay(2000);  // Wait for 2 seconds between readings
+
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
+
+  if (isnan(humidity) || isnan(temperature)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
+  }
+
+  Serial.print("Humidity: ");
+  Serial.print(humidity);
+  Serial.print("%  Temperature: ");
+  Serial.print(temperature);
+  Serial.println("°C");
+}
+            </pre>
+
+            <h2>Step 4: Upload and Test</h2>
+            <p>Upload the code to your Arduino board and open the Serial Monitor to view the real-time temperature and humidity data. If everything is set up correctly, you should see the readings displayed in the Serial Monitor.</p>
+            <img src="code-run-dht11.png" alt="Arduino Code Upload">
+
+            <h2>Step 5: Troubleshooting</h2>
+            <p>If you're encountering issues, ensure the following:</p>
+            <ul>
+                <li>The DHT11 is correctly connected to the specified pin.</li>
+                <li>The DHT library is installed in the Arduino IDE.</li>
+                <li>Check the Serial Monitor baud rate (it should be 9600). </li>
+            </ul>
+        </div>
+
+        <!-- Video Solution -->
+        <div class="tutorial-video">
+            <h2>Watch the Video Tutorial</h2>
+            <p>Watch the step-by-step video tutorial below to see the entire process in action.</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_id_here" title="Building a Temperature and Humidity Monitor with DHT11 and Arduino" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tech Tronics. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
