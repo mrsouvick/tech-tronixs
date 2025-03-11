@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Tronics</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary-blue: #003366;
+            --electric-green: #00FF00;
+            --text-dark: #1A1A1A;
+            --white: #FFFFFF;
+            --light-gray: #D3D3D3;
+            --cyan: #00FFFF;
+        }
+
+        body {
+            background-color: #FAF9F6;
+        }
+
+        /* Navigation styles */
+        .navbar {
+            background: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            height: 100px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .bidu-button {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .bidu-button:hover {
+            background-color: #4331B9;
+        }
+
+        /* Hero section styles */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            padding-right: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero h1 span {
+            color: var(--primary-blue);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-images {
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Team section styles */
+        .team-section {
+            padding: 4rem 2rem;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .team-member h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .team-member p {
+            color: #666;
+        }
+
+        /* New slogan section styles */
+        .slogan-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            align-items: center;
+        }
+
+        .slogan-content {
+            text-align: left;
+        }
+
+        .slogan-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .slogan-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .slogan-images {
+            position: relative;
+            text-align: right;
+        }
+
+        .slogan-image {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        /* Projects section styles */
+        .projects-section {
+            padding: 4rem 2rem;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .projects-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .project-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .project-card {
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact section styles */
+        .contact-section {
+            padding: 4rem 2rem;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: var(--electric-green);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #28a745;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .team-members {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .team-member {
+                width: 80%;
+                margin-bottom: 1rem;
+            }
+
+            .slogan-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .slogan-content {
+                text-align: center;
+            }
+
+            .projects-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .project-card {
+                width: 80%;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="bg-remove.png" alt="Tech Tronics Logo" class="logo">
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="#team">Team</a>
+            <a href="project-tutorial.html">Projects Tutorial</a>
+            <a href="#contact">Contact</a>
+            <button class="bidu-button" onclick="location.href='join-us.html'">Join Us</button>
+
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to Tech Tronics<br>Innovation in Robotics</h1>
+            <p>We design and build cutting-edge robots that challenge the status quo. Join us in our journey of innovation.</p>
+        </div>
+        <div class="hero-images">
+            <img src="3logo.png" alt="Robotics" class="main-image">
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <h2>Meet the Team</h2>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="souvick2dp.jpeg" alt="Souvick Kumar Halder">
+                <h3>Souvick Kumar Halder</h3>
+                <p>Team Lead - ROS Programmer</p>
+            </div>
+            <div class="team-member">
+                <img src="sayan-dp.jpeg" alt="Sayan Pal">
+                <h3>Sayan Pal</h3>
+                <p>Hardware Designer</p>
+            </div>
+            <div class="team-member">
+                <img src="tanmay-dp.jpeg" alt="Tanmay Maity">
+                <h3>Tanmay Maity</h3>
+                <p>Hardware Expert</p>
+            </div>
+            <div class="team-member">
+                <img src="sayandeep-dp.jpeg" alt="Sayandeep Bhunia">
+                <h3>Sayandeep Bhunia</h3>
+                <p>Hardware Lead</p>
+            </div>
+            <div class="team-member">
+                <img src="surajit-dp.jpeg" alt="Surajit Ghosh">
+                <h3>Surajit Ghosh</h3>
+                <p>Hardware Expert</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Slogan Section -->
+    <section class="slogan-section">
+        <div class="slogan-content">
+            <h2>Empowering Robotics with Innovation</h2>
+            <p>We push the boundaries of technology to create robots that solve real-world problems. Join our mission!</p>
+        </div>
+        <div class="slogan-images">
+            <img src="logo-2-removebg-.png" alt="Tech Tronics Logo" class="slogan-image">
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <h2>Our Projects</h2>
+        <div class="project-cards">
+            <div class="project-card">
+                <img src="project1.jpg" alt="Rover Project">
+                <h3>Rover Project</h3>
+                <p>Building a fully functional autonomous rover for exploration tasks.</p>
+            </div>
+            <div class="project-card">
+                <img src="project2.jpg" alt="Robotic Arm">
+                <h3>Robotic Arm</h3>
+                <p>A robotic arm capable of performing various industrial tasks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+<section class="contact-section" id="contact">
+    <h2>Get in Touch</h2>
+    <form class="contact-form" id="contactForm" onsubmit="sendEmail(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    <div id="thankYouMessage" style="display: none; font-size: 1.2rem; color: green; text-align: center; margin-top: 20px;">
+        Thank you for reaching out! Your message has been sent successfully.
+    </div>
+</section>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Tech Tronics. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form submission
+            document.getElementById('thankYouMessage').style.display = 'block';
+            document.getElementById('contactForm').reset();  // Reset form fields
+        });
+    </script>
+    <script type="text/javascript">
+        (function(){
+          emailjs.init("Q0qz1COjZI81WAeDJ"); // Replace with your EmailJS User ID
+        })();
+      </script>
+
+<script type="text/javascript">
+    // Initialize EmailJS with your Public API Key
+    (function(){
+      emailjs.init("Q0qz1COjZI81WAeDJ"); // Replace with your EmailJS Public API Key (User ID)
+    })();
+  
+    // Function to send the email when the form is submitted
+    function sendEmail(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+  
+      // Get the form data
+      const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+      };
+  
+      // Send the email using EmailJS
+      emailjs.send("service_xhfmw4g", "template_cuvvusi", formData)  // Replace with your Service ID and Template ID
+        .then((response) => {
+          // Show the thank you message
+          document.getElementById("thankYouMessage").style.display = "block";
+          // Reset the form
+          document.getElementById("contactForm").reset();
+        }, (error) => {
+          console.log(error);  // Log any error that occurs
+        });
+    }
+  </script>
+  
+  
+    
+
+</body>
+</html>

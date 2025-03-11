@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - Tech Tronics Team/title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary-blue: #003366;
+            --electric-green: #00FF00;
+            --text-dark: #1A1A1A;
+            --white: #FFFFFF;
+            --light-gray: #D3D3D3;
+        }
+
+        body {
+            background-color: #FAF9F6;
+        }
+
+        /* Header section */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        header img {
+            height: 100px;
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+        }
+
+        /* Main content section */
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .social-links {
+            margin-bottom: 3rem;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            margin: 0 1rem;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            color: var(--electric-green);
+        }
+
+        .join-button {
+            background-color: var(--electric-green);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .join-button:hover {
+            background-color: #28a745;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="logo_tech-removeb.png" alt="Tech Tronics Logo">
+        <h1>Join Tech Tronics</h1>
+        <p>Become a part of our exciting robotics journey and make a difference!</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <section class="content">
+        <h2>Connect with Us</h2>
+        <p>Follow us on our social media handles to stay updated:</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/TechTronicsTeam" target="_blank">Facebook</a>
+            <a href="https://twitter.com/TechTronicsTeam" target="_blank">Twitter</a>
+            <a href="https://www.instagram.com/TechTronicsTeam" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/company/TechTronicsTeam" target="_blank">LinkedIn</a>
+            <a href="https://github.com/TechTronicsTeam" target="_blank">GitHub</a>
+        </div>
+        
+        <!-- Join as Contributor Button -->
+        <button class="join-button" onclick="window.location.href='https://forms.gle/GsW3QwKz2N3mmBVf8'">Join Us as a Contributor</button>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Tech Tronics. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

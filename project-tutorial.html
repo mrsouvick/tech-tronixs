@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Tutorials - Tech Tronics</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary-blue: #003366;
+            --electric-green: #00FF00;
+            --text-dark: #1A1A1A;
+            --white: #FFFFFF;
+            --light-gray: #D3D3D3;
+            --cyan: #00FFFF;
+        }
+
+        body {
+            background-color: #FAF9F6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            height: 100px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .bidu-button {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .bidu-button:hover {
+            background-color: #4331B9;
+        }
+
+        /* Projects Tutorials Section */
+        .tutorials-section {
+            padding: 4rem 2rem;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .tutorials-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .tutorial-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tutorial-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .tutorial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tutorial-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-card p {
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="bg-remove.png" alt="Tech Tronics Logo" class="logo">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#team">Team</a>
+            <a href="project-tutorial.html">Projects Tutorial</a>
+        
+            <a href="#contact">Contact</a>
+            <button class="bidu-button">Join Us</button>
+        </div>
+    </nav>
+
+    <!-- Projects Tutorials Section -->
+    <section class="tutorials-section" id="tutorials">
+        <h2>Explore Our Projects Tutorials</h2>
+        <div class="tutorial-cards">
+            <!-- Tutorial 1 -->
+            <div class="tutorial-card">
+                <img src="dht11.jpeg" alt="Tutorial 1">
+                <h3>Building a Temperature and Humidity Monitor with DHT11 and Arduino</h3>
+                <p>Learn how to build a simple temperature and humidity monitoring system using the DHT11 sensor and Arduino. This project will guide you through the process of wiring the sensor, writing the Arduino code, and displaying real-time environmental data, making it perfect for beginner robotics and electronics enthusiasts. Use this system in weather stations, smart homes, or other environmental monitoring applications.</p>
+                <a href="/projects/dht11.html" style="color: var(--primary-blue); text-decoration: none;">Read Tutorial</a>
+            </div>
+            <!-- Tutorial 2 -->
+            <div class="tutorial-card">
+                <img src="tutorial2.jpg" alt="Tutorial 2">
+                <h3>Robotic Arm Design</h3>
+                <p>This tutorial walks you through the process of building a robotic arm for industrial applications.</p>
+                <a href="tutorial2.html" style="color: var(--primary-blue); text-decoration: none;">Read Tutorial</a>
+            </div>
+            <!-- Tutorial 3 -->
+            <div class="tutorial-card">
+                <img src="tutorial3.jpg" alt="Tutorial 3">
+                <h3>Basic Drone Assembly</h3>
+                <p>Learn how to assemble a simple drone for aerial photography and exploration.</p>
+                <a href="tutorial3.html" style="color: var(--primary-blue); text-decoration: none;">Read Tutorial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Tech Tronics. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
