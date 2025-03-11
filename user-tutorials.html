@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Tutorials - Tech Tronics</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #00FF00;
+            --text-color: #333;
+            --bg-light: #FAF9F6;
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--white);
+            box-shadow: 0 4px 8px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 60px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero button {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .hero button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Form Section */
+        .form-section {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .form-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .form-section form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-section input, .form-section select {
+            padding: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-section button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-section button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Tutorials Section */
+        .tutorials-section {
+            background-color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .tutorials-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .tutorials-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .tutorial-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px var(--shadow);
+            width: 300px;
+            transition: transform 0.3s;
+        }
+
+        .tutorial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tutorial-card iframe {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .tutorial-card h3 {
+            margin: 1rem 0;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .form-section h2 {
+                font-size: 2rem;
+            }
+
+            .tutorial-card {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .tutorials-grid {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .form-section input, .form-section select, .form-section button {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+
+            .tutorial-card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="bg-remove.png" alt="Tech Tronics Logo" class="logo">
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="#team">Team</a>
+            <a href="project-tutorial.html">Projects Tutorial</a>
+            <a href="notice.html">Announcement</a>
+            <button class="bidu-button" onclick="location.href='join-us.html'">Join Us</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Explore Free Tutorials</h1>
+        <p>Enhance your robotics knowledge with our expertly crafted tutorials.</p>
+        <button onclick="scrollToEnroll()">Enroll Now</button>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="enroll">
+        <h2>Enroll in Tutorials</h2>
+        <form id="enrollForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <select>
+                <option value="">Select a Tutorial</option>
+                <option value="robotics">Robotics Basics</option>
+                <option value="arduino">Arduino Projects</option>
+                <option value="ai">AI for Beginners</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Tutorials Section -->
+    <section class="tutorials-section">
+        <h2>Watch Tutorials</h2>
+        <div class="tutorials-grid">
+            <div class="tutorial-card">
+                <iframe src="https://www.youtube.com/embed/example1" frameborder="0" allowfullscreen></iframe>
+                <h3>Robotics Basics</h3>
+            </div>
+            <div class="tutorial-card">
+                <iframe src="https://www.youtube.com/embed/example2" frameborder="0" allowfullscreen></iframe>
+                <h3>Arduino Projects</h3>
+            </div>
+            <div class="tutorial-card">
+                <iframe src="https://www.youtube.com/embed/example3" frameborder="0" allowfullscreen></iframe>
+                <h3>AI for Beginners</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Tech Tronics. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll to Enroll Section
+        function scrollToEnroll() {
+            document.getElementById('enroll').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Form Submission Alert
+        document.getElementById('enrollForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for enrolling!');
+        });
+    </script>
+</body>
+</html>
