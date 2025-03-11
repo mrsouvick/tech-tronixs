@@ -1,0 +1,27 @@
+name: Auto GitHub Updates
+
+on:
+  push:
+    branches:
+      - main  # Triggers when you push to the main branch
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest  # Runs on a Linux server
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Git
+        run: |
+          git config --global user.name "Souvick Kumar Halder"
+          git config --global user.email "reach.souvick@gmail.com"
+
+      - name: Pull Latest Changes
+        run: git pull origin main
+
+      - name: Commit and Push Changes
+        run: |
+          git add .
+          git commit -m "Automated update from GitHub Actions" || echo "No changes to commit"
+          git push origin main
