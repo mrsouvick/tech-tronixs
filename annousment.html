@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcements</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+    }
+
+    .announcement-section {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .announcement-section h2 {
+      font-size: 2rem;
+      color: #3498db;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .announcement {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+    }
+
+    .announcement h3 {
+      font-size: 1.5rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .announcement p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement-section">
+    <h2>Announcements</h2>
+    <div id="announcements-list">
+      <!-- Announcements will be loaded here -->
+    </div>
+  </div>
+
+  <script>
+    // Fetch and display announcements
+    async function fetchAnnouncements() {
+      try {
+        const response = await fetch("/.netlify/functions/get-announcements");
+        const data = await response.json();
+        const announcementsList = document.getElementById("announcements-list");
+
+        if (data.length === 0) {
+          announcementsList.innerHTML = "<p>No announcements yet.</p>";
+          return;
+        }
+
+        announcementsList.innerHTML = data
+          .map(
+            (announcement) => `
+            <div class="announcement">
+              <h3>${announcement.fields.Title}</h3>
+              <p>${announcement.fields.Content}</p>
+            </div>
+          `
+          )
+          .join("");
+      } catch (error) {
+        console.error("Error fetching announcements:", error);
+        announcementsList.innerHTML = "<p>Failed to load announcements. Please try again later.</p>";
+      }
+    }
+
+    // Load announcements when the page loads
+    fetchAnnouncements();
+  </script>
+</body>
+</html>
