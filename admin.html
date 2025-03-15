@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Login Page */
+    .login-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .login-container h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .login-container p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    #login-btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: #fff;
+      background: #3498db;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    #login-btn:hover {
+      background: #2980b9;
+      transform: translateY(-3px);
+    }
+
+    /* Dashboard Page */
+    .dashboard-container {
+      display: none; /* Hidden by default */
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .dashboard-header h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    #logout-btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background: #e74c3c;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    #logout-btn:hover {
+      background: #c0392b;
+      transform: translateY(-3px);
+    }
+
+    .dashboard-content {
+      text-align: left;
+    }
+
+    .dashboard-content h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    #create-post-btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: #fff;
+      background: #2ecc71;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    #create-post-btn:hover {
+      background: #27ae60;
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Page -->
+  <div class="login-container" id="login-page">
+    <h1>Admin Login</h1>
+    <p>Welcome back! Please log in to access the dashboard.</p>
+    <button id="login-btn">Login with Netlify Identity</button>
+  </div>
+
+  <!-- Dashboard Page -->
+  <div class="dashboard-container" id="dashboard-page">
+    <div class="dashboard-header">
+      <h1>Admin Dashboard</h1>
+      <button id="logout-btn">Logout</button>
+    </div>
+    <div class="dashboard-content">
+      <h2>Create a New Post</h2>
+      <input type="text" id="post-title" placeholder="Post Title">
+      <textarea id="post-content" placeholder="Post Content"></textarea>
+      <button id="create-post-btn">Create Post</button>
+
+      <h2>Manage Sections</h2>
+      <!-- Add section management UI here -->
+    </div>
+  </div>
+
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // Check if the user is logged in
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (user) {
+          // User is logged in, show dashboard
+          document.getElementById("login-page").style.display = "none";
+          document.getElementById("dashboard-page").style.display = "block";
+        } else {
+          // User is not logged in, show login page
+          document.getElementById("login-page").style.display = "block";
+          document.getElementById("dashboard-page").style.display = "none";
+        }
+      });
+
+      // Open login modal when the button is clicked
+      document.getElementById("login-btn").addEventListener("click", () => {
+        window.netlifyIdentity.open("login");
+      });
+
+      // Redirect to dashboard after login
+      window.netlifyIdentity.on("login", () => {
+        document.getElementById("login-page").style.display = "none";
+        document.getElementById("dashboard-page").style.display = "block";
+      });
+
+      // Handle logout
+      document.getElementById("logout-btn").addEventListener("click", () => {
+        window.netlifyIdentity.logout();
+        document.getElementById("login-page").style.display = "block";
+        document.getElementById("dashboard-page").style.display = "none";
+      });
+    }
+
+    // Handle post creation
+    document.getElementById("create-post-btn").addEventListener("click", async () => {
+      const title = document.getElementById("post-title").value;
+      const content = document.getElementById("post-content").value;
+
+      if (!title || !content) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      // Save post to Airtable (see Step 2)
+      const response = await fetch("/.netlify/functions/create-post", {
+        method: "POST",
+        body: JSON.stringify({ title, content }),
+      });
+
+      if (response.ok) {
+        alert("Post created successfully!");
+      } else {
+        alert("Failed to create post.");
+      }
+    });
+  </script>
+</body>
+</html>
