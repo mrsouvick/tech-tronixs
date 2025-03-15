@@ -1,9 +1,9 @@
 const Airtable = require("airtable");
 
 exports.handler = async (event, context) => {
-  // Initialize Airtable
-  const base = new Airtable({ apiKey: process.env.patRtmvtVnbTkVYvH.f01f44c5990df5e8e31eff5e2babbe113e359581fc77a23e43b6303c2c17dbc9 }).base(
-    process.env.appojM8mJknDOjZqG
+  // Initialize Airtable with environment variables
+  const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
+    process.env.AIRTABLE_BASE_ID
   );
 
   try {
